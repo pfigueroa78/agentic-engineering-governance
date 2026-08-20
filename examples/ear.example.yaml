@@ -1,0 +1,16 @@
+version: "0.1"
+discovery:
+  - concern: "A new domain capability introduces a potentially material human task"
+    disposition: HYPOTHESIS_ONLY
+    rationale: "The task appears plausible from the domain delta but requires design synthesis and review before becoming authoritative."
+  - concern: "A backend-only reconciliation change"
+    disposition: SYSTEM_TO_SYSTEM_ONLY
+    rationale: "No material human interaction is introduced."
+design_synthesis: "Explore the human-facing concern openly, produce a coherent candidate journey if needed, and keep the proposal non-authoritative until reviewed."
+journey_state_coverage: PARTIAL
+evidence:
+  - type: DESIGN_ARTIFACT
+    claim: "A candidate interaction has been proposed"
+  - type: SOURCE_EVIDENCE
+    claim: "The implementation contains the proposed interaction boundary"
+acceptance: PENDING
