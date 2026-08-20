@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/egase/ear.schema.json",
+  "title": "EAR v0.1",
+  "type": "object",
+  "required": ["version", "discovery", "design_synthesis", "evidence", "acceptance"],
+  "properties": {
+    "version": {"const": "0.1"},
+    "discovery": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["concern", "disposition"],
+        "properties": {
+          "concern": {"type": "string", "minLength": 1},
+          "disposition": {"enum": ["NEW_HUMAN_EXPERIENCE", "EXISTING_JOURNEY_SUFFICIENT", "SYSTEM_TO_SYSTEM_ONLY", "NO_MATERIAL_HUMAN_INTERACTION", "DEFERRED_BY_GOVERNED_DEPENDENCY", "HYPOTHESIS_ONLY"]},
+          "rationale": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "design_synthesis": {"type": "string", "minLength": 1},
+    "journey_state_coverage": {"enum": ["NOT_APPLICABLE", "PARTIAL", "PASS", "FAIL"]},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "claim"],
+        "properties": {
+          "type": {"enum": ["DESIGN_ARTIFACT", "SOURCE_EVIDENCE", "TEST_EVIDENCE", "DEPLOYMENT_EVIDENCE", "RUNTIME_EVIDENCE", "OPERATIONAL_EVIDENCE", "HUMAN_REVIEW"]},
+          "claim": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "acceptance": {"enum": ["PENDING", "PARTIAL", "ACCEPTED", "REJECTED", "DEFERRED"]}
+  },
+  "additionalProperties": false
+}
