@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/egase/qsem.schema.json",
+  "title": "QSEM v0.1",
+  "type": "object",
+  "required": ["version", "concern", "strategies", "selected_strategy", "evidence_status"],
+  "properties": {
+    "version": {"const": "0.1"},
+    "concern": {"type": "string", "minLength": 1},
+    "quality_attributes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "strategies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "prediction"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "description": {"type": "string", "minLength": 1},
+          "prediction": {"type": "string", "minLength": 1},
+          "tradeoffs": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "selected_strategy": {"type": "string", "minLength": 1},
+    "experiment": {"type": "string"},
+    "evidence_status": {"enum": ["NOT_EXECUTED", "PARTIAL", "PASS", "FAIL"]},
+    "observations": {"type": "array", "items": {"type": "string"}},
+    "residual_uncertainty": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
